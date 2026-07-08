@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import "@/i18n/i18n";
 import AdminPage from "@/components/AdminPage";
 import BuzzerPage from "@/components/BuzzerPage";
-import Footer from "@/components/Login/Footer";
 import LoginPage from "@/components/LoginPage";
 import { ERROR_CODES } from "@/i18n/errorCodes";
 import { getWebSocketUrl } from "@/lib/utils";
@@ -305,7 +304,6 @@ export default function Home() {
               hostRoom={hostRoom}
             />
           </div>
-          <Footer />
         </div>
       );
     }

@@ -41,8 +41,7 @@ export default function MyApp({ Component, pageProps }: MyAppProps) {
         id="theme-loader"
         dangerouslySetInnerHTML={{
           __html: `
-          var theme = localStorage.getItem('theme') || 'default'
-          document.documentElement.classList.add(theme)
+          document.documentElement.classList.add('default')
         `,
         }}
       />

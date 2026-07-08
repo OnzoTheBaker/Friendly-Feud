@@ -1,6 +1,5 @@
 import CreateNewGameButton from "@/components/Admin/CreateNewGameButton";
 import GameLoader from "@/components/Admin/GameLoader";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { WSEvent } from "@/src/types";
 import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
@@ -24,7 +23,7 @@ export default function RoomSettings({
   setCsvFileUploadText,
   quitGame,
 }: RoomSettingsProps) {
-  const { i18n, t } = useTranslation();
+  const { t } = useTranslation();
   return (
     <div className="min-h-full">
       {/* ROOM CODE TEXT */}
@@ -50,12 +49,6 @@ export default function RoomSettings({
         </button>
       </div>
       <div className="m-5 flex flex-row items-center justify-evenly">
-        <LanguageSwitcher
-          onChange={(e) => {
-            i18n.changeLanguage(e.target.value);
-            send({ action: "change_lang", data: e.target.value });
-          }}
-        />
         <GameLoader
           gameSelector={gameSelector}
           send={send}

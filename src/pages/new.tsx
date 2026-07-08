@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import "@/i18n/i18n";
-import ThemeSwitcher from "@/components/Admin/ThemeSwitcher";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { validateGameData } from "@/lib/utils";
 import type { FinalRoundAnswer } from "@/types/game";
 
@@ -29,11 +27,6 @@ export default function CreateGame() {
   };
   const [error, setError] = useState("");
   const [game, setGame] = useState(gameTemplate);
-  const [theme, setTheme] = useState({
-    settings: {
-      theme: "default",
-    },
-  });
 
   console.debug(game);
 
@@ -56,19 +49,10 @@ export default function CreateGame() {
     };
   }
   return (
-    <div className={`${theme?.settings?.theme} min-h-screen bg-background`}>
+    <div className="default min-h-screen bg-background">
       <div className="p-5">
         <div className="flex-col space-y-5 py-10">
           <div className="flex flex-row items-center space-x-5">
-            <p className="text-foreground">{t("language")}:</p>
-            <LanguageSwitcher />
-            <ThemeSwitcher
-              game={theme}
-              setGame={setTheme}
-              send={() => {
-                console.debug("send from new");
-              }}
-            />
             <div className="flex flex-col rounded-lg  border-2">
               <div className="ml-4 translate-y-3 items-center p-2">
                 <input type="file" className=" bg-secondary-300 text-foreground" id="gamePicker" accept=".json" />

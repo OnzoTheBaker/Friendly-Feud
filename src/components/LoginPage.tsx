@@ -1,14 +1,9 @@
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 import TitleLogo from "@/components/TitleLogo";
-import { useTheme } from "next-themes";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import "@/i18n/i18n";
-import ThemeSwitcher from "@/components/Admin/ThemeSwitcher";
 import HelpButton from "@/components/HelpButton";
 import { ERROR_CODES } from "@/i18n/errorCodes";
 import { toast } from "sonner";
-import { GameTheme } from "../types";
 
 interface LoginPageProps {
   hostRoom: () => void;
@@ -28,8 +23,6 @@ export default function LoginPage({
   joinRoom,
 }: LoginPageProps) {
   const { t } = useTranslation();
-  const { theme } = useTheme();
-  const [game, setGame] = useState<GameTheme>({ settings: { theme: theme || "default" } });
 
   const isValidRoomCode = (code: string) => code.length === 4;
   const isValidPlayerName = (name: string) => name.length > 0 && name.length <= 12;
@@ -50,9 +43,7 @@ export default function LoginPage({
 
   return (
     <div className={`flex min-h-screen w-full flex-col space-y-10 bg-background p-5`}>
-      <div className="flex w-full flex-col items-center justify-between gap-2 sm:flex-row">
-        <LanguageSwitcher />
-        <ThemeSwitcher game={game} setGame={setGame} send={() => {}} />
+      <div className="flex w-full flex-row items-center justify-end gap-2">
         <HelpButton doc="/help" textSize="text-lg" padding=" px-5 py-2 " />
       </div>
       <TitleLogo insert="" />

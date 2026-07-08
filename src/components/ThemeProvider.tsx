@@ -18,6 +18,7 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
     <NextThemesProvider
       attribute="class"
       defaultTheme="default"
+      forcedTheme="default"
       value={{
         default: "default",
         darkTheme: "darkTheme",
