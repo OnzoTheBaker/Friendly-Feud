@@ -15,8 +15,11 @@ cd /app
 # Point Nginx at the runtime $PORT instead of the hardcoded 80.
 sed -i -E "s/listen +80 default_server;/listen ${PORT} default_server;/" /etc/nginx/nginx.conf
 
+# Nginx is the public entrypoint on $PORT and reverse-proxies to the internal
+# services. `next start` also honors $PORT, so pin it to 3000 (the port
+# nginx.conf proxies to) so it doesn't fight Nginx for the same port.
 ./Cold-Friendly-Feud --game_store "$FAMF_STORE" &
 nginx -g 'daemon off;' &
-npm run start &
+PORT=3000 npm run start &
 
 wait -n
